@@ -3,7 +3,7 @@ import os
 import csv
 
 # set the directory where the Excel files are located
-dir_path = "C:\\College\\Journals and papers\\Very Good"
+dir_path = "File_path_here"
 
 # loop through each Excel file in the directory and convert to CSV
 for file_name in os.listdir(dir_path):
@@ -18,7 +18,7 @@ for file_name in os.listdir(dir_path):
             df.to_csv(os.path.join(dir_path, csv_name), index=False)
 
 # set the directory where the CSV files are located
-dir_path = "C:\\College\\Journals and papers\\Good"
+dir_path = "File_path_here"
 
 # create a dictionary to store the data from each CSV file
 data_dict = {}
