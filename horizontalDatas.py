@@ -3,7 +3,7 @@ import os
 import csv
 
 # set the directory where the Excel files are located
-dir_path = "File_path_here"
+dir_path = "D:\\PythonAutomation\\PythonAutomation\\Excel Docs"
 
 # loop through each Excel file in the directory and convert to CSV
 for file_name in os.listdir(dir_path):
@@ -18,7 +18,7 @@ for file_name in os.listdir(dir_path):
             df.to_csv(os.path.join(dir_path, csv_name), index=False)
 
 # set the directory where the CSV files are located
-dir_path = "File_path_here"
+dir_path = "D:\\PythonAutomation\\PythonAutomation\\Excel Docs"
 
 # create a dictionary to store the data from each CSV file
 data_dict = {}
@@ -43,11 +43,83 @@ freq_list.sort()
 print(freq_list)
 
 # create a new CSV file to store the filtered data
-with open("filtered_data5.csv", "w", newline='') as outfile:
+with open("filtered_data1.csv", "w", newline='') as outfile:
     writer = csv.writer(outfile)
     # write the headers row
-    headers = ["Freq"] + [file_name.replace(".csv", "") for file_name in os.listdir(dir_path) if file_name.endswith(".csv")]
-    writer.writerow(headers[1:])
+    headers = ["Freq"] + [file_name.replace(".csv", "") for file_name in os.listdir(dir_path) if (file_name.endswith(".csv")and "Buffer 1" in file_name)]
+    writer.writerow(headers[0:])
+    print(headers)
+    # loop through the frequency values and write the data to the output file
+    for freq in freq_list:
+        row_data = [freq]
+        for file_name in headers[1:]:
+            for data in data_dict[file_name]:
+                if data[0] == freq:
+                    row_data.append(data[1])
+                    break
+            else:
+                row_data.append('')
+        writer.writerow(row_data)
+
+with open("filtered_data2.csv", "w", newline='') as outfile:
+    writer = csv.writer(outfile)
+    # write the headers row
+    headers = ["Freq"] + [file_name.replace(".csv", "") for file_name in os.listdir(dir_path) if (file_name.endswith(".csv")and "Buffer 2" in file_name)]
+    writer.writerow(headers[0:])
+    print(headers)
+    # loop through the frequency values and write the data to the output file
+    for freq in freq_list:
+        row_data = [freq]
+        for file_name in headers[1:]:
+            for data in data_dict[file_name]:
+                if data[0] == freq:
+                    row_data.append(data[1])
+                    break
+            else:
+                row_data.append('')
+        writer.writerow(row_data)
+
+with open("filtered_data3.csv", "w", newline='') as outfile:
+    writer = csv.writer(outfile)
+    # write the headers row
+    headers = ["Freq"] + [file_name.replace(".csv", "") for file_name in os.listdir(dir_path) if (file_name.endswith(".csv")and "Buffer 3" in file_name)]
+    writer.writerow(headers[0:])
+    print(headers)
+    # loop through the frequency values and write the data to the output file
+    for freq in freq_list:
+        row_data = [freq]
+        for file_name in headers[1:]:
+            for data in data_dict[file_name]:
+                if data[0] == freq:
+                    row_data.append(data[1])
+                    break
+            else:
+                row_data.append('')
+        writer.writerow(row_data)
+
+with open("filtered_data4.csv", "w", newline='') as outfile:
+    writer = csv.writer(outfile)
+    # write the headers row
+    headers = ["Freq"] + [file_name.replace(".csv", "") for file_name in os.listdir(dir_path) if (file_name.endswith(".csv")and "Buffer 4" in file_name)]
+    writer.writerow(headers[0:])
+    print(headers)
+    # loop through the frequency values and write the data to the output file
+    for freq in freq_list:
+        row_data = [freq]
+        for file_name in headers[1:]:
+            for data in data_dict[file_name]:
+                if data[0] == freq:
+                    row_data.append(data[1])
+                    break
+            else:
+                row_data.append('')
+        writer.writerow(row_data)
+
+with open("filtered_data_all.csv", "w", newline='') as outfile:
+    writer = csv.writer(outfile)
+    # write the headers row
+    headers = ["Freq"] + [file_name.replace(".csv", "") for file_name in os.listdir(dir_path) if (file_name.endswith(".csv"))]
+    writer.writerow(headers[0:])
     print(headers)
     # loop through the frequency values and write the data to the output file
     for freq in freq_list:
